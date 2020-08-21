@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo-server
+  messages:
+    basename: i18n/messages
+server:
+  port: 8000
+
+hucat:
+  logstash:
+    server: 127.0.0.1:8010

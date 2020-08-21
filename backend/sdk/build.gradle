@@ -1,0 +1,24 @@
+description = 'SDK for the whole project'
+archivesBaseName = 'hucat-sdk'
+
+dependencies {
+
+    // 3rd-party dependencies
+    compile 'com.github.axet:kaptcha:0.0.9'
+    compile "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+//    compile 'org.springframework:spring-aspects'
+    compile 'commons-beanutils:commons-beanutils:1.9.2'
+    compile 'com.alibaba:fastjson:1.2.13'
+    compile 'commons-io:commons-io:2.5'
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'com.belerweb:pinyin4j:2.5.1'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.5'
+    compile 'com.google.guava:guava:19.0'
+    //logstash
+    compile 'net.logstash.logback:logstash-logback-encoder:4.11'
+
+    // test
+    testRuntime 'com.jayway.jsonpath:json-path-assert:2.2.0'
+
+}

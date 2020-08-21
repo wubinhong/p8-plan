@@ -1,0 +1,2 @@
+# 名字为bootstrap.yml，先于application.yml加载，可以用于全局设置
+hucat.logstash.server: logstash.backend.com:9092

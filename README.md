@@ -15,7 +15,13 @@ This repo can be regarded as a collection of coding, wiki, and some other stuff 
 
 #### 使用说明
 
-1.  xxxx
+1. 常用命令行
+```bash
+# 运行某个Java类（https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-executable-jar-format.html）
+$ java -cp app.jar -D"loader.main=com.hucat.jvm.gc.Demo" org.springframework.boot.loader.PropertiesLauncher
+# 测试GC回收样例程序
+$ java -Xms20M -Xmx20M -XX:+PrintGC -cp app.jar -D"loader.main=com.hucat.jvm.gc.T15FullGCProblem01" org.springframework.boot.loader.PropertiesLauncher
+```
 2.  xxxx
 3.  xxxx
 
