@@ -23,7 +23,8 @@ public class AppServer {
 
         // System info collection
         Map<Object, Object> sysInfo = new HashMap<>();
-        System.getenv().forEach(sysInfo::put);
+        System.getProperties().forEach(sysInfo::put);
+        // System.getenv().forEach(sysInfo::put);
         sysInfo.put("maxMemory", Runtime.getRuntime().maxMemory() / 1024 / 1024 + " M");
         sysInfo.put("maxMemoryMXBean", ManagementFactory.getMemoryMXBean().getHeapMemoryUsage().getMax() / 1024 / 1024 + " M");
         log.info("System info:\n{}", StringUtils.prettyPrint(sysInfo));
