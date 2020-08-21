@@ -10,7 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Basic flask environment
 COPY ./docker/sources.list /etc/apt/
 RUN apt-get update -y
-RUN apt-get install -y openjdk-8-jdk curl tree vim less net-tools tcpdump iputils-ping traceroute atop glances cron nginx-full redis-server && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y openjdk-8-jdk openjdk-8-dbg curl tree vim less net-tools tcpdump lsof iputils-ping traceroute atop glances cron nginx-full redis-server && rm -rf /var/lib/apt/lists/*
 #RUN apt-get install -y build-essential
 
 # Nginx component setting: redirect logger to container's std in/out which can be checkeout out via command docker logs
@@ -23,6 +23,8 @@ VOLUME [ "/data" ]
 
 ### =================== New Stage =========================== ###
 # Stage two building
+## Note: this should be used in conjunction with / along with ./build.sh bash script, which means that as long as having built target--base above into local repo with tag wbh/p8:base,
+## this target--app would be executed without running the content of stage--base
 FROM wbh/p8:base AS app
 ### =================== New Stage =========================== ###
 # Sync app
@@ -38,8 +40,8 @@ COPY ./docker/cron_task /etc/cron.d/backup-task
 # Set environment variables
 WORKDIR /app/backend
 ## https://docs.oracle.com/javase/7/docs/webnotes/tsg/TSG-VM/html/envvars.html
-ENV JAVA_TOOL_OPTIONS="-XX:+PrintGC"
-ENV JAVA_OPTS="-Xms20m -Xmx20m"
+#ENV JAVA_TOOL_OPTIONS="-Xms50m -Xmx50m -XX:+PrintGC"
+ENV JAVA_TOOL_OPTIONS="-Xms50m -Xmx50m"
 
 # Startup app
 # Illustrate how to construct a standard dockefile, acutally, we don't have to use ENTRYPOINT here.

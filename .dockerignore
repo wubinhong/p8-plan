@@ -3,10 +3,12 @@
 
 # general
 .git
+.gitee
 .idea
 .vscode
 .DS_Store
 .pytest_cache
+logs
 
 # backend
 backend/**/src

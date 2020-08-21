@@ -15,7 +15,7 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext {
         springBootVersion = '1.5.10.RELEASE'
-        lombokVersion = "1.16.2"
+        lombokVersion = "1.18.12"
     }
     repositories {
         maven { url = "http://maven.aliyun.com/nexus/content/groups/public" }

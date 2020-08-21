@@ -49,3 +49,4 @@ __pycache__
 ## other
 logs
 *.err
+local.properties

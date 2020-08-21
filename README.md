@@ -1,29 +1,49 @@
 # p8 plan
 
 #### 介绍
+
 This repo can be regarded as a collection of coding, wiki, and some other stuff in the process of learning advanced technologies required by a senior developer.
 
 #### 软件架构
-软件架构说明
 
+软件架构说明
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
 #### 使用说明
 
-1. 常用命令行
+1. docker相关命令行
+
+```bash
+# 构建基础镜像
+$ ./build.sh image base
+# 构建app镜像（wbh/p8:v1）并创建容器
+$ ./build.sh app && ./build.sh container
+
+# 解决jinfo, jmap等命令遇到的Operation not permitted问题（以extended权限登陆容器）
+$ docker exec --privileged -it p8_server bash
+```
+
+2.常用命令行
+
 ```bash
 # 运行某个Java类（https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-executable-jar-format.html）
 $ java -cp app.jar -D"loader.main=com.hucat.jvm.gc.Demo" org.springframework.boot.loader.PropertiesLauncher
 # 测试GC回收样例程序
 $ java -Xms20M -Xmx20M -XX:+PrintGC -cp app.jar -D"loader.main=com.hucat.jvm.gc.T15FullGCProblem01" org.springframework.boot.loader.PropertiesLauncher
+# 查看java进程的内存设置情况
+$ jps -v
+# 查看jvm的map信息
+$ jmap $(jps |grep app.jar |awk '{print $1}')
+$ jmap -heap $(jps |grep app.jar |awk '{print $1}')
+# 查看jvm的基本信息
+$ jinfo $(jps |grep app.jar |awk '{print $1}')
+# jvm统计工具
+$ jstat -options
+$ jstat -gc $(jps |grep app.jar |awk '{print $1}') 1000
+$ jstat -gcutil $(jps |grep app.jar |awk '{print $1}') 1000
+$ jstat -compiler/class/printcompilation $(jps |grep app.jar |awk '{print $1}')
 ```
-2.  xxxx
-3.  xxxx
 
 #### 参与贡献
 
