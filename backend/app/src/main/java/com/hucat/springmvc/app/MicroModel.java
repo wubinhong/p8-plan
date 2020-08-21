@@ -2,12 +2,10 @@ package com.hucat.springmvc.app;
 
 import com.hucat.springmvc.app.enums.ModelStatus;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
 @Data
-@Slf4j
 public class MicroModel<T> implements Serializable {
 
     private static final long serialVersionUID = 5464991789274947173L;

@@ -7,6 +7,8 @@ package com.hucat.sdk.exception;
  */
 public class AppException extends HucatException {
 
+    private static final long serialVersionUID = 1L;
+
     public AppException(String message) {
         super(message);
     }

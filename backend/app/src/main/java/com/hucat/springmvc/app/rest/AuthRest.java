@@ -14,7 +14,7 @@ public class AuthRest {
 
     @GetMapping("/")
     @ApiOperation("测试，勿删")
-    public RestModel getTest(@RequestParam(required = false) String username) {
+    public RestModel<Object> getTest(@RequestParam(required = false) String username) {
         log.info("测试！！！Test...");
         return RestModel.create().body(System.currentTimeMillis());
     }

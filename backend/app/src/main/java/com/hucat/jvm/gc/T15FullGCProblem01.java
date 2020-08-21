@@ -9,6 +9,8 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import lombok.Data;
+
 /**
  * Demonstrate how to invoke GC process.
  * Command line
@@ -25,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class T15FullGCProblem01 {
 
+    @Data
     private static class CardInfo {
         private BigDecimal price = new BigDecimal(0.0);
         private String name = "kevin";

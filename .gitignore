@@ -50,3 +50,7 @@ __pycache__
 logs
 *.err
 local.properties
+.vscode
+**/.settings
+**/.classpath
+**/bin

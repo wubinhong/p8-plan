@@ -2,16 +2,12 @@ package com.hucat.springmvc.app;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class RestModel<T> extends MicroModel<T> {
 
     private static final long serialVersionUID = 2300809594032275053L;
-
-    private static final String format = "%25s : %s";
 
     private String message;
 
@@ -29,7 +25,7 @@ public class RestModel<T> extends MicroModel<T> {
         return model;
     }
 
-    public static <T> RestModel create(MicroModel<T> microModel) {
+    public static <T> RestModel<T> create(MicroModel<T> microModel) {
         RestModel<T> restModel = new RestModel<>(microModel);
         restModel.message = restModel.codeToMessage();
         return restModel;
