@@ -5,12 +5,15 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hucat.sdk.consts.Globals;
 import com.hucat.sdk.utils.JSONUtils;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import lombok.extern.slf4j.Slf4j;
+
+@SpringBootTest
+@SpringBootConfiguration
 @ActiveProfiles("unit") // 使用专用的单元测试profile，该模式下不需要集成dubbo
 @Slf4j
 public abstract class BaseTest {

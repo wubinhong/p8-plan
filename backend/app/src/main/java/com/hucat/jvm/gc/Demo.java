@@ -5,6 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Demo {
 
+    public String getHelloWorld() {
+        return String.format("Hello, %s", System.currentTimeMillis());
+    }
+
     public static void main(String[] args) {
         System.out.println("Demo run...");
         log.info("Demo Start...");

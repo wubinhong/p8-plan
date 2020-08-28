@@ -68,9 +68,13 @@ subprojects {
     // In this section you declare the dependencies for your production and test code
     dependencies {
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+        // Make lombok available in command line "gradle test".
+        testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         // compile phase
         compile "org.projectlombok:lombok:${lombokVersion}"
         compile 'junit:junit:4.12'
+        // Fix up error NoClassDefFoundError: javax.activation.MimetypesFileTypeMap in jdk above jdk9
+        compile 'javax.activation:activation:1.1.1'
 
         // test phase
         testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
@@ -88,9 +92,16 @@ subprojects {
     }
 
     task wrapper(type: Wrapper) {
-        gradleVersion = '4.6'
+        gradleVersion = '5.6.4'
     }
 
     // compile warning check
     compileJava.options.compilerArgs = ['-Xlint:unchecked','-Xlint:deprecation']
+
+    test {
+        // Enable logging info showed in the console, which mainly determined by "standardOut" event
+        testLogging {
+            events "passed", "skipped", "failed", "standardOut", "standardError"
+        }
+    }
 }
