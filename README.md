@@ -55,7 +55,7 @@ $ find . -type d -name bin -exec rm -r {} +
 $ find . -type f -name .project -exec rm -r {} +
 $ find . -type f -name .classpath -exec rm -r {} +
 # Single command integrating all commands above
-$ find . -type d -regex '.*/.settings' -exec rm -r {} + && find . -type d -not -regex '\./\.git.*' -and -regex '.*/logs' -exec rm -r {} + && find . -type d -name bin -exec rm -r {} + && find . -type f -name .project -exec rm -r {} + && find . -type f -name .classpath -exec rm -r {} +
+$ find . -not -regex '\./\.git.*' -and -regex '.*/logs' -or -regex '.*/.settings' -or -type d -name bin -or -type f -name '.project' -or -type f -name '.classpath' |xargs rm -r
 # Regenerate configure files of Java Extention Pack after cleaning them.
 cmd + shift + p --> clean the java language server workspace
 ```
