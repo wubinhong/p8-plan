@@ -40,7 +40,7 @@ out
 
 ## gradle
 .gradle
-gradle
+!gradle/wrapper/gradle-wrapper.jar
 build
 
 # Python
