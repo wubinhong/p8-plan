@@ -7,7 +7,7 @@ set -euxo pipefail
 prepare_before_docker_build() {
     echo "Make preparing jobs before docker build:"
     echo "Clean up backend and rebuild it..."
-    (cd backend/app && gradle clean assemble)
+    (cd backend/app && ../../gradlew clean assemble)
 }
 
 ## Remove container and image
