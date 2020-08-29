@@ -9,8 +9,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Basic flask environment
 COPY ./docker/sources.list /etc/apt/
-RUN apt-get update -y
-RUN apt-get install -y openjdk-8-jdk openjdk-8-dbg curl tree vim less net-tools tcpdump lsof iputils-ping traceroute atop glances cron nginx-full redis-server && rm -rf /var/lib/apt/lists/*
+RUN apt-get update --fix-missing -y
+RUN apt-get install -y openjdk-11-jdk openjdk-11-dbg curl tree vim less net-tools tcpdump lsof iputils-ping traceroute atop glances cron nginx-full redis-server && rm -rf /var/lib/apt/lists/*
 #RUN apt-get install -y build-essential
 
 # Nginx component setting: redirect logger to container's std in/out which can be checkeout out via command docker logs

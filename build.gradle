@@ -14,7 +14,8 @@ version '1.0-SNAPSHOT'
  */
 buildscript {
     ext {
-        springBootVersion = '1.5.10.RELEASE'
+        // springBootVersion = '1.5.10.RELEASE'
+        springBootVersion = '2.3.3.RELEASE'
         lombokVersion = "1.18.12"
     }
     repositories {
@@ -40,9 +41,9 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
 
-    // Uses JDK 8
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    // Uses JDK 11
+    sourceCompatibility = 1.11
+    targetCompatibility = 1.11
 
     bootRun {
         // If System.console() return non null instance,
