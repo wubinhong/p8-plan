@@ -12,7 +12,7 @@ This repo can be regarded as a collection of coding, wiki, and some other stuff 
 
 #### 使用说明
 
-1. docker相关命令行
+1.docker相关命令行
 
 ```bash
 # 构建基础镜像
@@ -59,6 +59,32 @@ $ find . -not -regex '\./\.git.*' -and -regex '.*/logs' -or -regex '.*/.settings
 # Regenerate configure files of Java Extention Pack after cleaning them.
 cmd + shift + p --> clean the java language server workspace
 ```
+
+### vscode说明
+
+### 插件安装
+
+> 安装java支持
+
+```console
+cmd + shift + X (Extentions) --> Java Extension Pack
+```
+
+注意：如果新添加的project或者java test类没有及时出现`CodeLens`的`Run|Debug`按钮，则可以清空插件的workspace缓存，重启并刷新vscode，等待下方状态栏的圈圈转停止，即构建完workspace的index
+
+```console
+cmd + shift + P --> clean the java language server workspace
+```
+
+> 安装gradle插件
+
+```console
+shift + cmd + X (Extentions) --> Gradle Extension Pack
+```
+
+注意：项目要为`gradle`项目（可以使用命令行`gradle init`初始化，具有`gradle/wrapper/gradle-wrapper.(jar|properties)`目录），插件才能自动识别。插件会根据`gradle-wrapper.properties`文件的定义，决定使用哪个版本的gradle进行编译，使用插件编译相当于执行命令`./gradlew`
+
+For more information, please search `java overview` in `Command Palette` or refer to webpage [Running and debugging Java](https://code.visualstudio.com/docs/java/java-debugging#_run-junit-tests).
 
 #### 参与贡献
 
