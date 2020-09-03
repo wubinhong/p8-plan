@@ -45,7 +45,9 @@ public class GeneralTest extends BaseTest {
                 return "Hello";
             }
         });
-        print(submit1.get());
+        String res = submit1.get();
+        print(res);
+        Assert.assertNotNull(res);
     }
 
     @Test
@@ -56,6 +58,7 @@ public class GeneralTest extends BaseTest {
         log.info("Result: {}", sha256hex);
         // log.info("Length: {} | {}", result.length, Hex.encodeHexString(result));
         log.info("Result: {}", CryptUtils.encrypt("sdfasf2222"));
+        Assert.assertEquals(source, CryptUtils.decrypt(CryptUtils.encrypt(source)));
     }
 
     // @Test
