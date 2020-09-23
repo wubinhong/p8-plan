@@ -1,21 +1,32 @@
 package com.hucat.sdk.utils;
 
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.hucat.sdk.BaseTest;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.File;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
+import com.hucat.sdk.BaseTest;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class GeneralTest extends BaseTest {
@@ -41,6 +52,7 @@ public class GeneralTest extends BaseTest {
             @Override
             public String call() throws Exception {
                 print("call....");
+                // this.wait(1000);
                 Thread.sleep(2000);
                 return "Hello";
             }
@@ -59,6 +71,37 @@ public class GeneralTest extends BaseTest {
         // log.info("Length: {} | {}", result.length, Hex.encodeHexString(result));
         log.info("Result: {}", CryptUtils.encrypt("sdfasf2222"));
         Assert.assertEquals(source, CryptUtils.decrypt(CryptUtils.encrypt(source)));
+    }
+
+    @Test
+    public void dateTime() {
+        Assert.assertTrue(true);
+        Date now = new Date();
+        log.info("offset: {} | {}", now, TimeZone.getDefault().getID());
+        String pattern = "E MMM dd HH:mm:ss XXX yyyy";
+        // String pattern = "E MMMM dd HH:mm:ss z yyyy";
+        SimpleDateFormat df = new SimpleDateFormat(pattern);
+        for(String zoneId : ZoneId.getAvailableZoneIds()) {
+            if(zoneId.contains("Canada")) {
+                df.setTimeZone(TimeZone.getTimeZone(zoneId));
+                log.info("{} | {}", String.format("%25s", zoneId), df.format(now));
+            }
+        }
+
+        pattern = "E MMM dd HH:mm:ss XXX'['VV']' yyyy";
+        for(String zoneId : ZoneId.getAvailableZoneIds()) {
+            // log.info("zoneId: {}", zoneId);
+            if(zoneId.contains("Asia")) {
+                ZonedDateTime zdt = ZonedDateTime.ofInstant(Instant.ofEpochMilli(now.getTime()), ZoneId.of(zoneId));
+                log.info("{} | {}", String.format("%25s", zoneId), zdt.format(DateTimeFormatter.ofPattern(pattern)));
+            }
+        }
+        log.info("ZonedDateTime.now(): {}", ZonedDateTime.now());
+        log.info("DateFormat.getDateInstance: {}", DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH).format(now));
+        log.info("DateFormat.getDateInstance: {}", DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH).format(now));
+        log.info("DateFormat.getDateInstance: {}", DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH).format(now));
+        log.info("DateFormat.getDateInstance: {}", DateFormat.getDateInstance(DateFormat.FULL, Locale.CHINA).format(now));
+
     }
 
     // @Test
@@ -95,6 +138,7 @@ public class GeneralTest extends BaseTest {
                 print(matcher.group(i + 1));
             }
         }
+        Assert.assertTrue(true);
     }
 
 }

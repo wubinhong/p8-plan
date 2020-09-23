@@ -26,7 +26,7 @@ public class CryptUtils {
     /**
      * 密钥
      */
-    private static final String privateKey = "Crackers and the thief will suffer misfortune";
+    private static final String PRIVATE_KEY = "Crackers and the thief will suffer misfortune";
 
     /**
      * 可逆加密
@@ -38,7 +38,7 @@ public class CryptUtils {
         try {
             KeyGenerator kgen = KeyGenerator.getInstance("AES");
             SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
-            secureRandom.setSeed(privateKey.getBytes());
+            secureRandom.setSeed(PRIVATE_KEY.getBytes());
             kgen.init(128, secureRandom);
             SecretKey secretKey = kgen.generateKey();
             byte[] enCodeFormat = secretKey.getEncoded();
@@ -67,7 +67,7 @@ public class CryptUtils {
             byte[] content = Base64.decodeBase64(encryptedStr);
             KeyGenerator kgen = KeyGenerator.getInstance("AES");
             SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
-            secureRandom.setSeed(privateKey.getBytes());
+            secureRandom.setSeed(PRIVATE_KEY.getBytes());
             kgen.init(128, secureRandom);
             SecretKey secretKey = kgen.generateKey();
             byte[] enCodeFormat = secretKey.getEncoded();
