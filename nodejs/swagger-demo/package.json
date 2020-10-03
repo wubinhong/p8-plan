@@ -1,0 +1,23 @@
+{
+  "name": "swagger-demo",
+  "version": "1.0.0",
+  "description": "Swagger docs demo with swagger-ui-express and swagger-jsdoc",
+  "main": "app.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --watch app --inspect ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "author": "wbh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-jsdoc": "^4.2.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

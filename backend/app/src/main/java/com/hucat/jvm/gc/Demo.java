@@ -14,6 +14,13 @@ public class Demo {
         log.info("Demo Start...");
         System.out.println("maxMemory: " + Runtime.getRuntime().maxMemory());
         System.out.println(String.format("maxMemory: %sM", Runtime.getRuntime().maxMemory() / 1024 / 1024));
+        while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

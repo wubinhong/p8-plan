@@ -54,3 +54,7 @@ local.properties
 **/.settings
 **/.classpath
 **/bin
+
+# Nodejs
+node_modules
+dist
