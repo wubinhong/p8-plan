@@ -25,11 +25,11 @@ let router = express.Router();
  *          description: Receive back flavor and flavor Id.
  */
 router.route('').post((req, res) => {
-    console.log(req.body);
     let response = {
         body: req.body,
         flavorId: Math.floor(Math.random() * 10),
     };
+    console.log(`->>\n${JSON.stringify(req.headers)}\n<<-\n${JSON.stringify(response)}\n====================`)
     res.send(response)
 });
 
