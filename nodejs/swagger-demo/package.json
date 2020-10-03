@@ -4,7 +4,7 @@
   "description": "Swagger docs demo with swagger-ui-express and swagger-jsdoc",
   "main": "app.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon --watch app --inspect ./app.js",
+    "dev": "NODE_ENV=development nodemon --watch app.js --watch app --inspect ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

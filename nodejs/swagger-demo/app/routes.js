@@ -21,4 +21,5 @@ router.get('/api-docs.json', function (req, res) {
 
 router.get('/healthcheck', (req, res) => res.send('OK'));
 
+router.swaggerAuth = swaggerAuth;
 module.exports = router;

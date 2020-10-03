@@ -14,22 +14,25 @@ const user = {
     swaggerAuth: randomStr(),
 };
 
+router.user = user;
+
 router.route('').get((req, res, next) => {
     if (req.cookies['swaggerAuth'] === user.swaggerAuth) {
+        console.log(`Swagger docs access validated: ${req.cookies['swaggerAuth']} | ${user.swaggerAuth}`);
         next();
     } else {
         console.log(
-            `Auth failed due to unmatching of swaggerAuth: ${req.cookies['swaggerAuth']} | ${user.swaggerAuth}`
+            `Swagger docs auth failed due to unmatching of swaggerAuth: ${req.cookies['swaggerAuth']} | ${user.swaggerAuth}`
         );
         res.sendFile('./views/login-swagger.html', { root: __dirname });
     }
 });
 
 router.route('/auth/login').post((req, res) => {
-    console.log(`Login Info: ${req.originalUrl} | ${JSON.stringify(req.body, null, 4)}`);
+    console.log(`Swagger login Info: ${req.originalUrl} | ${JSON.stringify(req.body, null, 4)}`);
     if (req.body['username'] === 'kevin' && req.body['password'] === '111111') {
         let swaggerAuth = randomStr();
-        console.log(`Validated successfully! System generates new swaggerAuth: ${swaggerAuth}`);
+        console.log(`Swagger validated successfully! System generates new swaggerAuth: ${swaggerAuth}`);
         user.swaggerAuth = swaggerAuth;
         res.cookie('swaggerAuth', swaggerAuth);
         res.send({ code: 0 });

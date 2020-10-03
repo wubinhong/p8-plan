@@ -4,6 +4,7 @@ module.exports.addOne = function (req, res) {
     try {
         if (!req.body.flavor) {
             res.send({ error: 'no flavor supplied' });
+            return;
         }
         let response = {
             flavor: req.body.flavor,
@@ -17,7 +18,6 @@ module.exports.addOne = function (req, res) {
 
 module.exports.getAll = function (req, res) {
     try {
-        console.log('get all');
         let response = [
             {
                 flavor: 'strawberry',
@@ -28,6 +28,7 @@ module.exports.getAll = function (req, res) {
                 flavorId: 2,
             },
         ];
+        console.log(`Get all: ${JSON.stringify(response)}`);
         res.send(response);
     } catch (err) {
         res.send({ error: err.message });
