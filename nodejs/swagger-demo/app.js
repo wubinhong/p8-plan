@@ -16,7 +16,7 @@ app.use('/', routes);
 
 app.listen(PORT, () => {
     console.log(`Server running on: http://localhost:${PORT}`);
-    console.log(`Swagger docs server: http://localhost:${PORT}/api-docs`)
+    console.log(`Swagger docs server: http://localhost:${PORT}/api-docs/`)
     console.log(`Swagger auth info: ${JSON.stringify(routes.swaggerAuth.user)}`)
 });
 

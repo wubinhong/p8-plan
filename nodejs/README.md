@@ -2,6 +2,14 @@
 
 ## Framework & Extension & Plugin
 
+### IDE related
+
+```bash
+# Debugging TypeScript in VS Code without compiling, using ts-node
+$ npm install --save-dev typescript ts-node
+$ node --nolazy -r ts-node/register aa.ts
+```
+
 ### Swagger
 
 Installation
@@ -68,3 +76,5 @@ $ moleculer init project my-first-project
 [MoleculerJS's module list](https://moleculer.services/modules.html)
 
 [nats server](https://hub.docker.com/_/nats/)
+
+[moleculerjs-boilerplate](https://pankod.github.io/moleculerjs-boilerplate/docs/setup)
