@@ -114,3 +114,18 @@ const object = backpack.get();
 console.log(object);
 // backpack.add(23);
 backpack.add('23');
+
+interface Point2 {
+    x: number;
+    y: number;
+}
+interface IRouterMatcher<
+    T,
+    Method extends 'all' | 'get' | 'post' | 'put' | 'delete' | 'patch' | 'options' | 'head' = any
+> {
+    <P = Point2, ResBody = any, ReqBody = any>(path: string, ...handlers: Array<string>): T;
+}
+
+// let router: IRouterMatcher<string, 'all'> = {
+//
+// }
