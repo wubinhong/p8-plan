@@ -53,6 +53,13 @@ $ moleculer init module my-module
 $ moleculer init project my-first-project
 ```
 
+#### Start all in one MoleculerJS project
+
+```bash
+# Use all in one scaffold with moleculerjs, swagger, docker etc.
+$ git clone https://github.com/pankod/moleculerjs-boilerplate.git
+```
+
 ## Reference
 
 [MoleculerJS Example](https://moleculer.services/docs/0.14/examples.html). Please start from Short examples.
