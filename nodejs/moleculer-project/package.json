@@ -4,7 +4,7 @@
   "description": "My Moleculer-based microservices project",
   "scripts": {
     "dev": "moleculer-runner --repl --hot services/**/*.service.js",
-    "dev2": "node --inspect ./node_modules/moleculer/bin/moleculer-runner.js --repl --hot services/**/*.service.js",
+    "debug": "node --inspect ./node_modules/moleculer/bin/moleculer-runner.js --repl --hot services/**/*.service.js",
     "start": "moleculer-runner",
     "cli": "moleculer connect NATS",
     "ci": "jest --watch",

@@ -22,10 +22,19 @@ brokerNode1.createService({
             {
                 aliases: {
                     // When the "GET /products" request is made the "listProducts" action of "products" service is executed
+                    'GET /info': 'gateway.getGatewayInfo',
                     'GET /products': 'products.listProducts',
                 },
             },
         ],
+    },
+
+    actions: {
+        // Define service action that returns the available products
+        getGatewayInfo(ctx) {
+            console.log(ctx);
+            return { name: 'gateway server', version: 12 };
+        },
     },
 });
 
