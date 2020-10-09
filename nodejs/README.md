@@ -51,6 +51,8 @@ $ npm install -g moleculer-cli
 $ moleculer init module my-module
 # Init a new Moleculer project.
 $ moleculer init project my-first-project
+# Init a new Moleculer project with typescript template
+$ moleculer init project-typescript moleculer-ts
 ```
 
 #### Start all in one MoleculerJS project
