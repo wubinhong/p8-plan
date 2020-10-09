@@ -14,14 +14,14 @@
     <script>
         $('button').click(function () {
             $.post(
-                'auth/login',
+                '/api-docs/auth/login',
                 {
                     username: $('#username').val(),
                     password: $('#password').val(),
                 },
                 function (data, status) {
                     if(status === 'success' && data.code === 0) {
-                        location.href = '.'
+                        location.href = '/api-docs/'
                     } else {
                         alert(`Auth failed due to: {status: ${status}, msg: ${data.msg}}`);
                     }

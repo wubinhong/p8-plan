@@ -1,5 +1,6 @@
 'use strict';
-import { Context, Service, ServiceBroker, ServiceSchema } from 'moleculer';
+import { Context, ServiceBroker, ServiceSchema } from 'moleculer';
+import {Service} from './service'
 
 import DbConnection from '../mixins/db.mixin';
 

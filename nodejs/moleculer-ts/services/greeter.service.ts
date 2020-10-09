@@ -1,20 +1,22 @@
-"use strict";
+'use strict';
 
-import { Service, ServiceBroker, Context } from "moleculer";
+import { Context, ServiceBroker } from 'moleculer';
+import { Service } from './service';
 
 export default class GreeterService extends Service {
     public constructor(public broker: ServiceBroker) {
         super(broker);
+        let me = this;
         this.parseServiceSchema({
-            name: "greeter",
+            name: 'greeter',
             actions: {
                 hello: {
                     rest: {
-                        method: "GET",
-                        path: "/hello",
+                        method: 'GET',
+                        path: '/hello',
                     },
                     async handler(): Promise<string> {
-                        return this.ActionHello();
+                        return me.ActionHello();
                     },
                 },
 
@@ -40,14 +42,14 @@ export default class GreeterService extends Service {
                  *          description: Receive back a welcome word message with your name passed on.
                  */
                 welcome: {
-                    rest: "/welcome",
+                    rest: '/welcome',
                     params: {
-                        name: "string",
+                        name: 'string',
                     },
                     async handler(
                         ctx: Context<{ name: string }>
                     ): Promise<string> {
-                        return this.ActionWelcome(ctx.params.name);
+                        return me.ActionWelcome(ctx.params.name);
                     },
                 },
             },
@@ -60,7 +62,7 @@ export default class GreeterService extends Service {
      * /greeter/hello:
      *    get:
      *      tags:
-     *          - Greeter
+     *        - Greeter
      *      summary: This should return a hello world message.
      *      consumes:
      *        - application/json
@@ -69,7 +71,9 @@ export default class GreeterService extends Service {
      *          description: Receive back a hello word message.
      */
     public ActionHello(): string {
-        return "Hello Moleculer";
+        this.logger.info(`Action hello invoke! ${Math.random()}`);
+        this.log.info(`Action.hello called! ${Math.random()}`);
+        return 'Hello Moleculer';
     }
 
     public ActionWelcome(name: string): string {

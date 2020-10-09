@@ -16,7 +16,7 @@ const user = {
 
 router.user = user;
 
-router.route('').get((req, res, next) => {
+router.route(['', '/']).get((req, res, next) => {
     if (req.cookies['swaggerAuth'] === user.swaggerAuth) {
         console.log(
             `Swagger docs access validated: ${req.cookies['swaggerAuth']} | ${user.swaggerAuth}`
