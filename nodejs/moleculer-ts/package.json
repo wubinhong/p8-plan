@@ -4,7 +4,8 @@
   "description": "My Moleculer-based microservices project",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "dev": "ts-node ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts",
+    "dev": "node --inspect --nolazy -r ts-node/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts",
+    "swagger": "NODE_ENV=development nodemon -w services -w swagger -e 'js ts html' ./swagger/index.js",
     "start": "moleculer-runner",
     "cli": "moleculer connect Redis",
     "ci": "jest --watch",
@@ -20,27 +21,33 @@
   ],
   "author": "",
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.2",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prefer-arrow": "^1.2.2",
     "jest": "^25.1.0",
     "jest-cli": "^25.1.0",
     "moleculer-repl": "^0.6.2",
+    "nodemon": "^2.0.4",
     "ts-jest": "^25.3.0",
     "ts-node": "^8.8.1"
   },
   "dependencies": {
-    "moleculer-web": "^0.9.0",
-    "moleculer-db": "^0.8.4",
-    "moleculer-db-adapter-mongo": "^0.4.7",
-    "ioredis": "^4.14.1",
-    "moleculer": "^0.14.0",
-    "typescript": "^3.8.3",
     "@types/jest": "^25.1.4",
     "@types/mkdirp": "^1.0.0",
-    "@types/node": "^13.9.8"
+    "@types/node": "^13.9.8",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "ioredis": "^4.14.1",
+    "moleculer": "^0.14.0",
+    "moleculer-db": "^0.8.4",
+    "moleculer-db-adapter-mongo": "^0.4.7",
+    "moleculer-web": "^0.9.0",
+    "swagger-jsdoc": "^4.2.3",
+    "swagger-ui-express": "^4.1.4",
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">= 10.x.x"

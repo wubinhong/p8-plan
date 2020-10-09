@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Swagger Login</title>
+    </head>
+    <body>
+        <label for="username">Username</label><input type="text" name="username" id="username" /><br />
+        <label for="password">Password</label><input type="password" name="password" id="password" /><br />
+        <button>Submit</button>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $('button').click(function () {
+            $.post(
+                'auth/login',
+                {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                },
+                function (data, status) {
+                    if(status === 'success' && data.code === 0) {
+                        location.href = '.'
+                    } else {
+                        alert(`Auth failed due to: {status: ${status}, msg: ${data.msg}}`);
+                    }
+                }
+            );
+        });
+    </script>
+</html>

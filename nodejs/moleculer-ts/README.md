@@ -24,6 +24,16 @@ In the terminal, try the following commands:
 ## Mixins
 - **db.mixin**: Database access mixin for services. Based on [moleculer-db](https://github.com/moleculerjs/moleculer-db#readme)
 
+## Swagger
+
+Swagger integration
+
+```bash
+# Install necessary npm components
+$ npm install --save express cookie-parser cors swagger-jsdoc swagger-ui-express
+$ npm install --save-dev nodemon
+```
+
 
 ## Useful links
 
