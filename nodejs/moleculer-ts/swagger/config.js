@@ -1,5 +1,5 @@
-const swaggerJsdoc = require('swagger-jsdoc');
 const path = require('path');
+const swaggerJsdoc = require('swagger-jsdoc');
 
 function getApis(relativePaths) {
     return relativePaths.map((p) => path.join(__dirname, p));

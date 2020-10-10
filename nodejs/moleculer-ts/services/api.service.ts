@@ -49,12 +49,12 @@ export default class ApiService extends Service {
                         /**
                          * Before call hook. You can check the request.
                          */
-                        onBeforeCall(
+                        onBeforeCall: (
                             ctx: Context<any, { userAgent: string }>,
                             route: object,
                             req: IncomingMessage,
                             res: ServerResponse
-                        ) {
+                        ) => {
                             //   Set request headers to context meta
                             ctx.meta.userAgent = req.headers['user-agent'];
                         },
@@ -62,13 +62,13 @@ export default class ApiService extends Service {
                         /**
                          * After call hook. You can modify the data.
                          */
-                        onAfterCall(
+                        onAfterCall: (
                             ctx: Context,
                             route: object,
                             req: IncomingMessage,
                             res: ServerResponse,
                             data: object
-                        ) {
+                        ) => {
                             // Async function which return with Promise
                             // return doSomething(ctx, res, data);
                         },

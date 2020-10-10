@@ -64,7 +64,7 @@ module.exports = {
 		"@typescript-eslint/prefer-namespace-keyword": "error",
 		"@typescript-eslint/quotes": [
 			"error",
-			"double",
+			"single",
 			{
 				avoidEscape: true
 			}

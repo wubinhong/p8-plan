@@ -6,7 +6,7 @@ import { Service } from './service';
 export default class GreeterService extends Service {
     public constructor(public broker: ServiceBroker) {
         super(broker);
-        let me = this;
+        const me = this;
         this.parseServiceSchema({
             name: 'greeter',
             actions: {

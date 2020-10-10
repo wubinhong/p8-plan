@@ -1,9 +1,5 @@
 'use strict';
-import {
-	BrokerOptions,
-	Errors,
-	MetricRegistry
-} from 'moleculer';
+import { BrokerOptions, Errors, MetricRegistry } from 'moleculer';
 
 /**
  * Moleculer ServiceBroker configuration file

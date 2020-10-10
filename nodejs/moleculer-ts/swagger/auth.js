@@ -1,6 +1,6 @@
 const express = require('express');
 
-let router = express.Router();
+const router = express.Router();
 
 function randomStr() {
     let r = Math.random().toString(36);
