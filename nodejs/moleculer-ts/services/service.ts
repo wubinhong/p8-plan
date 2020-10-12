@@ -7,6 +7,7 @@ import {
     ServiceBroker, ServiceSchema,
     ServiceSettingSchema
 } from 'moleculer';
+import 'source-map-support/register'
 
 /**
  * Custom logger instance derive from LoggerInstance in 'moleculer'

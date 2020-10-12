@@ -45,10 +45,15 @@ export default class GreeterService extends Service {
                     rest: '/welcome',
                     params: {
                         name: 'string',
+                        age: 'string', // The type of this field is different from ctx.params.age
                     },
                     async handler(
-                        ctx: Context<{ name: string }>
+                        ctx: Context<{ name: string; age: number }>
                     ): Promise<string> {
+                        let age = ctx.params.age; // Convert automatically, don't worry about the type conflict.
+                        me.log.info(
+                            `ctx.params: ${JSON.stringify(ctx.params)} | ${age}`
+                        );
                         return me.ActionWelcome(ctx.params.name);
                     },
                 },

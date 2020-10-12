@@ -1,6 +1,6 @@
 'use strict';
 import { Context, ServiceBroker, ServiceSchema } from 'moleculer';
-import {Service} from './service'
+import { Service } from './service';
 
 import DbConnection from '../mixins/db.mixin';
 
@@ -14,6 +14,7 @@ export default class ProductsService extends Service {
         schema: ServiceSchema<{}> = { name: 'products' } as ServiceSchema
     ) {
         super(broker);
+        const me = this;
         this.parseServiceSchema(
             Service.mergeSchemas(
                 {
@@ -89,12 +90,15 @@ export default class ProductsService extends Service {
                             rest: 'PUT /:id/quantity/increase',
                             params: {
                                 id: 'string',
-                                // @ts-ignore
-                                value: 'string',
+                                // The input parameter will be validated here. The handler won't be invoked if the validation fail.
+                                value: 'number',
                             },
                             async handler(
                                 ctx: Context<{ id: string; value: number }>
                             ): Promise<{}> {
+                                me.log.info(
+                                    `ctx.params: ${JSON.stringify(ctx.params)}`
+                                );
                                 const doc = await this.adapter.updateById(
                                     ctx.params.id,
                                     { $inc: { quantity: ctx.params.value } }
@@ -151,6 +155,9 @@ export default class ProductsService extends Service {
                             async handler(
                                 ctx: Context<{ id: string; value: number }>
                             ) {
+                                me.log.info(
+                                    `ctx.params: ${JSON.stringify(ctx.params)}`
+                                );
                                 const doc = await this.adapter.updateById(
                                     ctx.params.id,
                                     { $inc: { quantity: -ctx.params.value } }

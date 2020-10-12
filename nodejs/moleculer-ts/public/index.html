@@ -530,7 +530,8 @@
 							{ id: "hello", action: "greeter.hello", rest: "/api/greeter/hello", response: null, status: null, duration: null },
 
 							{ id: "welcome", action: "greeter.welcome", rest: "/api/greeter/welcome", fields: [
-								{ field: "name", label: "Name", type: "text", paramType: "param", model: "welcomeName" }
+								{ field: "name", label: "Name", type: "text", paramType: "param", model: "welcomeName" },
+								{ field: "age", label: "age", type: "number", paramType: "param", model: "age" },
 							], response: null, status: null, duration: null }
 						],
 						products: [
@@ -570,6 +571,7 @@
 
 					fields: {
 						welcomeName: "John",
+						age: 23,
 						productID: null,
 						productName: "Xiamoi Mi 9T",
 						productPrice: 299,
@@ -669,7 +671,7 @@
 						if (body && method == "GET") {
 							body = null;
 						}
-						if (params) {
+						if (params && Object.keys(params).length > 0) {
 							url += "?" + new URLSearchParams(params).toString();
 						}
 					}
