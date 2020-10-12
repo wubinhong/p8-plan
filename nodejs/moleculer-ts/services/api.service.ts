@@ -62,7 +62,7 @@ export default class ApiService extends Service {
                         /**
                          * After call hook. You can modify the data.
                          */
-                        onAfterCall: (
+                        /* onAfterCall: (
                             ctx: Context,
                             route: object,
                             req: IncomingMessage,
@@ -71,7 +71,7 @@ export default class ApiService extends Service {
                         ) => {
                             // Async function which return with Promise
                             // return doSomething(ctx, res, data);
-                        },
+                        }, */
 
                         // Calling options. More info: https://moleculer.services/docs/0.14/moleculer-web.html#Calling-options
                         callingOptions: {},
