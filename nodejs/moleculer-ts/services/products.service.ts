@@ -97,7 +97,7 @@ export default class ProductsService extends Service {
                                 ctx: Context<{ id: string; value: number }>
                             ): Promise<{}> {
                                 me.log.info(
-                                    `ctx.params: ${JSON.stringify(ctx.params)}`
+                                    `increaseQuantity ctx.params: ${JSON.stringify(ctx.params)}`
                                 );
                                 const doc = await this.adapter.updateById(
                                     ctx.params.id,
@@ -149,14 +149,16 @@ export default class ProductsService extends Service {
                             params: {
                                 id: 'string',
                                 // @ts-ignore
-                                value: 'string|number',
+                                value: 'number|string',
                             },
                             /** @param {Context} ctx  */
                             async handler(
                                 ctx: Context<{ id: string; value: number }>
                             ) {
                                 me.log.info(
-                                    `ctx.params: ${JSON.stringify(ctx.params)}`
+                                    `decreaseQuantity ctx.params: ${JSON.stringify(
+                                        ctx.params
+                                    )}`
                                 );
                                 const doc = await this.adapter.updateById(
                                     ctx.params.id,
