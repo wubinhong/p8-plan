@@ -8,14 +8,15 @@ services:
     image: moleculer-ts
     env_file: docker-compose.env
     environment:
+      # moleculer-runner.sh decides to launch which service according to this env variable and service file name with *.service.js pattern.
       SERVICES: api
-      PORT: 3000
+      PORT: 3500
     depends_on:
       - redis
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.api-gw.rule=PathPrefix(`/`)"
-      - "traefik.http.services.api-gw.loadbalancer.server.port=3000"
+      - "traefik.http.services.api-gw.loadbalancer.server.port=3500"  # This server.port should be consistent with env variable PORT defined above.
     networks:
       - internal
 
@@ -42,6 +43,8 @@ services:
       - mongo
       - redis
     networks:
+      # Under this network mode, this container can access other container by address 
+      # like MONGO_URI=mongodb://mongo/moleculer-ts which is defined in env variables.
       - internal
 
   mongo:

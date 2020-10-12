@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "My Moleculer-based microservices project",
   "scripts": {
+    "prebuild": "mkdir -p dist && rm -r dist",
     "build": "tsc --build tsconfig.json",
     "dev": "node --inspect --nolazy -r ts-node/register ./node_modules/moleculer/bin/moleculer-runner.js --hot --repl --config moleculer.config.ts services/**/*.service.ts",
     "swagger": "NODE_ENV=development nodemon -w services -w swagger -e 'js ts html' ./swagger/index.js",
