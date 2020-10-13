@@ -12,7 +12,7 @@ import 'source-map-support/register'
 /**
  * Custom logger instance derive from LoggerInstance in 'moleculer'
  */
-class LoggerFormatted {
+export class LoggerFormatted {
     /**
      * Inject logger into class Logger's constructor
      * @param logger logger of Service from 'moleculer'
