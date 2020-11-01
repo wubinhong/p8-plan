@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+
+  app:
+    build:
+      context: .
+      args:
+        ENV: prod
+    image: wbh/p8
+    env_file: docker-compose.env
+    ports:
+      - 9001:8000
+    volumes:
+      - ~/data/container/p8:/data
+      - ~/data/container/p8/db:/data/db
+    environment:
+      PYTHON_ENV: product
+
+volumes:
+  data:

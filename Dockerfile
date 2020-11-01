@@ -1,4 +1,4 @@
-FROM mongo:bionic AS base
+FROM mongo:bionic
 LABEL author="Binghong wu" email="<wubinhong2012@gmail.com>"
 
 # Timezone setting
@@ -21,16 +21,28 @@ RUN sed -i "s/bind .*/bind 127.0.0.1/g" /etc/redis/redis.conf
 # Volume
 VOLUME [ "/data" ]
 
-### =================== New Stage =========================== ###
-# Stage two building
-## Note: this should be used in conjunction with / along with ./build.sh bash script, which means that as long as having built target--base above into local repo with tag wbh/p8:base,
-## this target--app would be executed without running the content of stage--base
-FROM wbh/p8:base AS app
-### =================== New Stage =========================== ###
-# Sync app
+# Install backend dependencies
+RUN mkdir -p /root/.pip /app/backend /app/src/backend/gradle /app/src/backend/backend
+COPY ./gradle /app/src/backend/gradle
+COPY ./settings.gradle /app/src/backend/
+COPY ./gradlew /app/src/backend/
+COPY ./build.gradle /app/src/backend/
+
+## Download gradle wrapper
+WORKDIR /app/src/backend
+RUN ./gradlew projects
+
+## Install gradlen dependencies
+COPY ./backend /app/src/backend/backend
+RUN mkdir -p tmp && find backend -name "build.gradle" |xargs cp --parents -t tmp && rm -r backend && mv tmp/backend . && rm -r tmp
+RUN ./gradlew clean :backend:app:dependencies --configuration=compile
+RUN rm -r /app/src/backend/backend
+
+# Update backend source and compile jar
+COPY ./backend /app/src/backend/backend
+RUN ./gradlew clean :backend:app:assemble && cp backend/app/build/libs/app.jar /app/backend/
+
 # Configure pip
-RUN mkdir -p /app/backend /app/frontend && mkdir /root/.pip
-COPY ./backend/app/build/libs/app.jar /app/backend/
 COPY ./docker/p8-entrypoint.sh /usr/local/bin
 COPY ./docker/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/p8.conf /etc/nginx/sites-available/default

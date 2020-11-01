@@ -15,13 +15,20 @@ This repo can be regarded as a collection of coding, wiki, and some other stuff 
 1.docker相关命令行
 
 ```bash
-# 构建基础镜像
-$ ./build.sh image base
-# 构建app镜像（wbh/p8:v1）并创建容器
-$ ./build.sh app && ./build.sh container
+# 构建镜像
+$ ./build.sh build
+# 构建镜像，并创建和运行容器
+$ ./build.sh up
+# 容器下线
+$ ./build.sh down
+# 容器日志查看
+$ ./build.sh logs
+## 或者直接使用docker-compose
+$ docker-compose build|up|down|logs
 
 # 解决jinfo, jmap等命令遇到的Operation not permitted问题（以extended权限登陆容器）
 $ docker exec --privileged -it p8_server bash
+
 ```
 
 2.常用命令行

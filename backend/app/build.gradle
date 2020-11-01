@@ -30,3 +30,6 @@ dependencies {
 
 }
 
+springBoot {
+    mainClass = "com.hucat.springmvc.app.AppServer"
+}
